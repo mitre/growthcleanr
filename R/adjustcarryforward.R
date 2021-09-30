@@ -1083,6 +1083,8 @@ acf_answers <- function(subjid,
 #' @rawNamespace import(plyr, except = c(failwith, id, summarize, count, desc, mutate, arrange, rename, is.discrete, summarise, summarize))
 #' @rawNamespace import(dplyr, except = c(last, first, summarize, src, between))
 #' @import data.table
+#' @importFrom utils head
+#' @importFrom utils tail
 #' @examples
 #' \donttest{
 #' # Run on a small subset of given data
@@ -1135,6 +1137,7 @@ adjustcarryforward <- function(subjid,
   pair.prev <- dewma.before.next <- pair.next <- bef.g.aftm1 <- aft.g.befp1 <- NULL
   abs.tbc.sd.prev <- abs.tbc.sd.next <- exclude <- n <- dewma.before <- NULL
   tanner.months <- whoagegrp_ht <- whoagegrp.ht <- z.orig <- index <- temp.diff <- NULL
+  line <- incl.bef <- incl.aft <- str.position <- i.exclude <- NULL
 
   # check option is valid
   if (!exclude_opt %in% 0:3){
