@@ -1189,6 +1189,10 @@ adjustcarryforward <- function(subjid,
   data.all <- data.all %>%
     filter(.data$param %in% c("HEIGHTCM", "LENGTHCM"))
 
+  # filter out observations of ages < 2 years old
+  data.all <- data.all %>%
+    filter(agedays < 2*365.25)
+
   # filter to only subjects with possible carried forwards - n is here to merge back
   # if they have all includes, filter them out
   data.all <- data.all %>%
