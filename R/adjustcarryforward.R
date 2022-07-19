@@ -383,6 +383,8 @@ check_cf_string <- function(
 
 # function to calculate step 15 as in the original algorithm (no parameters)
 # eval type: definitely "exclude" or "include"
+
+# STOP REMOVE EWMA AND EXTRANEOUS CODE
 calc_step_15_no_param <- function(
   df,
   eval_type = "exclude",
@@ -419,6 +421,8 @@ calc_step_15_no_param <- function(
     pair.prev = FALSE,
     pair.next = FALSE
   )]
+
+  # STOP: MAYBE REMOVE???
 
   # ewma fields are needed later -- calculate now for efficiency
   df[, (ewma.fields) := ewma(agedays, tbc.sd, ewma.exp, TRUE)]
@@ -664,6 +668,7 @@ calc_step_15_no_param <- function(
   #  iii.	Generate aft_g_befp1=1 if |Δewma_htaft| for the value of interest is greater than |Δewma_htbef| for the next value
   #       AND the value of interest is not the last height value for that subject AND pair==1 AND pair for the next value==1
   # NOTE: pair.next will be NA last height, which will result in a FALSE value below
+  # STOP HERE -- REMOVE
   df[, `:=`(
     bef.g.aftm1 = na_as_false(
       abs(dewma.before) > abs(dewma.after.prev)  & pair & pair.prev
